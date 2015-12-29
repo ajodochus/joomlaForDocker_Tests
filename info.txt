@@ -1,0 +1,4 @@
+Project from:
+eclipse/skalli
+https://github.com/eclipse/skalli/tree/master/org.eclipse.skalli.selenium/src/test/java/org/eclipse/skalli/selenium
+
