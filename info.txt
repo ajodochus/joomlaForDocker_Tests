@@ -9,5 +9,6 @@ set Port for localhost via mvn commandline:
 mvn test -Dgroups=properties -DlocalhostPort=8080
 (setup in pom.xml)
 
-
+cookies handling
+...
 
