@@ -1,4 +1,13 @@
-Project from:
+
+
+
+Project ursprünglich from:
 eclipse/skalli
 https://github.com/eclipse/skalli/tree/master/org.eclipse.skalli.selenium/src/test/java/org/eclipse/skalli/selenium
+
+set Port for localhost via mvn commandline:
+mvn test -Dgroups=properties -DlocalhostPort=8080
+(setup in pom.xml)
+
+
 

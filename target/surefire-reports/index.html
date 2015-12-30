@@ -58,7 +58,7 @@
                 </li>
                 <li>
                   <a href="#" class="navigator-link " panel-name="group-Searchresult_Tests">
-                    <span>0 groups</span>
+                    <span>1 group</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -101,7 +101,7 @@
                     <div class="method-list-content passed suite-Searchresult_Tests">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Searchresult_Tests" title="tests.simple.HomePageAvailableTest" hash-for-method="setupClass">setupClass</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Searchresult_Tests" title="tests.userManagement.AuthorLoginTest" hash-for-method="getProperties">getProperties</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Searchresult_Tests -->
@@ -119,14 +119,14 @@
           <div class="suite-Searchresult_Tests-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">tests.simple.HomePageAvailableTest</span>
+              <span class="class-name">tests.userManagement.AuthorLoginTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="setupClass">
-                  </a> <!-- setupClass -->
-                  <span class="method-name">setupClass</span>
+                  <a name="getProperties">
+                  </a> <!-- getProperties -->
+                  <span class="method-name">getProperties</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -142,8 +142,13 @@
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite verbose=&quot;0&quot; name=&quot;Searchresult Tests&quot;&gt;
   &lt;test name=&quot;Verify Search Result Count&quot;&gt;
+    &lt;groups&gt;
+      &lt;run&gt;
+        &lt;include name=&quot;properties&quot;/&gt;
+      &lt;/run&gt;
+    &lt;/groups&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;tests.simple.HomePageAvailableTest&quot;/&gt;
+      &lt;class name=&quot;tests.userManagement.AuthorLoginTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Verify Search Result Count --&gt;
 &lt;/suite&gt; &lt;!-- Searchresult Tests --&gt;
@@ -167,6 +172,14 @@
             <span class="header-content">Groups for Searchresult Tests</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">properties</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">getProperties</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="times-Searchresult_Tests" class="panel">
@@ -185,14 +198,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'setupClass')
-data.setCell(0, 2, 'tests.simple.HomePageAvailableTest')
-data.setCell(0, 3, 68668);
+data.setCell(0, 1, 'getProperties')
+data.setCell(0, 2, 'tests.userManagement.AuthorLoginTest')
+data.setCell(0, 3, 73);
 window.suiteTableData['Searchresult_Tests']= { tableData: data, tableDiv: 'times-div-Searchresult_Tests'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 73 ms</span>
               <div id="times-div-Searchresult_Tests">
               </div> <!-- times-div-Searchresult_Tests -->
             </div> <!-- times-div -->
@@ -207,9 +220,16 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Searchresult_Tests" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">0 ignored methods</span>
+            <span class="header-content">1 ignored method</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">tests.userManagement.AuthorLoginTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">loginAuthorAdmin</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Searchresult_Tests" class="panel">
@@ -218,9 +238,9 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">tests.simple.HomePageAvailableTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">tests.userManagement.AuthorLoginTest</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">setupClass</span>
+                <span class="method-name">getProperties</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->

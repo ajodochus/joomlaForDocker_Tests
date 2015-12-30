@@ -3,11 +3,11 @@
 <suite verbose="0" name="Failed suite [Searchresult Tests]">
   <test name="Verify Search Result Count(failed)">
     <classes>
-      <class name="tests.simple.HomePageAvailableTest">
+      <class name="tests.userManagement.AuthorLoginTest">
         <methods>
           <include name="setupClass"/>
         </methods>
-      </class> <!-- tests.simple.HomePageAvailableTest -->
+      </class> <!-- tests.userManagement.AuthorLoginTest -->
     </classes>
   </test> <!-- Verify Search Result Count(failed) -->
 </suite> <!-- Failed suite [Searchresult Tests] -->

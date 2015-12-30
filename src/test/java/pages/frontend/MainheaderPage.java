@@ -25,7 +25,7 @@ public class MainheaderPage extends AbstractPage {
 		// TODO Auto-generated method stub
 		return get_lnk_AuthorLogin();
 	}
-	protected WebElement get_lnk_AuthorLogin() {
+	public WebElement get_lnk_AuthorLogin() {
         return lnk_AuthorLogin;
     }
 

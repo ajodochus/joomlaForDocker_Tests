@@ -16,11 +16,12 @@ public class HomePageAvailableTest {
     @Test
     public static void setupClass() {
         driver = Utils.initializeDriver();
-
         initializePageObjects();
         System.out.println(page.getTitle());
-       page.isDisplayedWithExplicitWait();
+      
+       
     }
+    
     
     private static void initializePageObjects() {
         page = PageFactory.initElements(driver, MainheaderPage.class);

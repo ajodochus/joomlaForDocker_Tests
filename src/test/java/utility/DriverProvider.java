@@ -11,14 +11,14 @@ import pages.frontend.MainheaderPage;
 
 public class DriverProvider {
 	 private static WebDriver driver;
-	 private static final String LOCALHOST = "localhost";
+	 private static String _url = "localhost";
 	    /**
 	     * The shutdown hook
 	     */
 	    private static Thread shutdownHook = new Thread() {
 	        @Override
 	        public void run() {
-	            stopDriver();
+	           // stopDriver();
 	        }
 	    };
 
@@ -81,7 +81,10 @@ public class DriverProvider {
 	     * @return the http base URL
 	     */
 	    private static String getHTTPBaseUrl() {
-	        return "http://" + LOCALHOST;
+	        return _url;
+	    }
+	    public static void setHTTPBaseUrl(String url){
+	    	_url = url;
 	    }
 
 	    /**

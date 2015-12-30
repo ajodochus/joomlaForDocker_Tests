@@ -2,16 +2,19 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Searchresult Tests" duration-ms="68777" started-at="2015-12-28T22:41:34Z" finished-at="2015-12-28T22:42:43Z">
+  <suite name="Searchresult Tests" duration-ms="141" started-at="2015-12-30T21:02:20Z" finished-at="2015-12-30T21:02:20Z">
     <groups>
+      <group name="properties">
+        <method signature="AuthorLoginTest.getProperties()[pri:0, instance:tests.userManagement.AuthorLoginTest@2ed94a8b]" name="getProperties" class="tests.userManagement.AuthorLoginTest"/>
+      </group> <!-- properties -->
     </groups>
-    <test name="Verify Search Result Count" duration-ms="68777" started-at="2015-12-28T22:41:34Z" finished-at="2015-12-28T22:42:43Z">
-      <class name="tests.simple.HomePageAvailableTest">
-        <test-method status="PASS" signature="setupClass()[pri:0, instance:tests.simple.HomePageAvailableTest@cded763]" name="setupClass" duration-ms="68668" started-at="2015-12-28T23:41:34Z" finished-at="2015-12-28T23:42:43Z">
+    <test name="Verify Search Result Count" duration-ms="141" started-at="2015-12-30T21:02:20Z" finished-at="2015-12-30T21:02:20Z">
+      <class name="tests.userManagement.AuthorLoginTest">
+        <test-method status="PASS" signature="getProperties()[pri:0, instance:tests.userManagement.AuthorLoginTest@2ed94a8b]" name="getProperties" duration-ms="73" started-at="2015-12-30T22:02:20Z" finished-at="2015-12-30T22:02:20Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setupClass -->
-      </class> <!-- tests.simple.HomePageAvailableTest -->
+        </test-method> <!-- getProperties -->
+      </class> <!-- tests.userManagement.AuthorLoginTest -->
     </test> <!-- Verify Search Result Count -->
   </suite> <!-- Searchresult Tests -->
 </testng-results>
