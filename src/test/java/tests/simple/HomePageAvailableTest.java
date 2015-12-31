@@ -4,6 +4,8 @@ import pages.frontend.MainheaderPage;
 import utility.Utils;
 import utility.DriverProvider;
 
+import java.net.MalformedURLException;
+
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -14,7 +16,7 @@ public class HomePageAvailableTest {
     private static MainheaderPage page;
     
     @Test
-    public static void setupClass() {
+    public static void setupClass() throws MalformedURLException {
         driver = Utils.initializeDriver();
         initializePageObjects();
         System.out.println(page.getTitle());
