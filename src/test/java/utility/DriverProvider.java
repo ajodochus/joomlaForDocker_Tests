@@ -1,17 +1,24 @@
 package utility;
 
+import java.net.MalformedURLException;
+import java.net.SocketException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import pages.frontend.MainheaderPage;
 
 public class DriverProvider {
-	 private static WebDriver driver;
-	 private static String _url = "localhost";
+	 private static RemoteWebDriver driver;
+	 private static String dockerIp;
+
+
 	    /**
 	     * The shutdown hook
 	     */
@@ -26,19 +33,17 @@ public class DriverProvider {
 	     * Returns the {@link org.openqa.selenium.WebDriver} instance used for the tests.
 	     * The driver navigates to the URL returned by  {@link #getHTTPBaseUrl()}
 	     * @return The {@link org.openqa.selenium.WebDriver} instance used for the tests.
+	     * @throws MalformedURLException 
 	     */
-	    public static WebDriver getDriver() {
+	    public static WebDriver getDriver() throws MalformedURLException {
 	        if (driver == null) {
 	            startDriver();
 	        }
 	        return driver;
 	    }
 
-	    /**
-	    * Restarts the driver (means it stops the driver and then starts it again).
-	    * @return The driver to be used now
-	    */
-	    public static WebDriver restartDriver() {
+
+	    public static WebDriver restartDriver() throws MalformedURLException {
 	        stopDriver();
 	        startDriver();
 
@@ -49,19 +54,36 @@ public class DriverProvider {
 
 	    /**
 	     * Starts the driver, adds a shutdown hook to stop the driver and navigates to {@link #getHTTPBaseUrl()}
+	     * @throws MalformedURLException 
 	     */
-	    private static void startDriver() {	        
-	        driver = new FirefoxDriver();
+	    private static void startDriver() throws MalformedURLException {	    
+	    	DesiredCapabilities capability = null;
+
+			capability = DesiredCapabilities.firefox();
+			capability.setJavascriptEnabled(true);
+			
+			try {
+				dockerIp = Utils.getDockerHubIp();
+			} catch (SocketException e) {
+				// TODO Auto-generated catch block
+				dockerIp = "http://172.17.0.1";
+				e.printStackTrace();
+			} 
+			driver = new RemoteWebDriver(new URL("http://0.0.0.0:4444/wd/hub"), capability);
+			//driver.get(Utils.getProperties("dockerIp"));
+			driver.get(dockerIp);
+			
 	        registerShutdownHook();
-	        driver.get(getHTTPBaseUrl());  
+	        // config.propeties --> url
+	        // system.properties --> via mvn -DlocalhostPort or default 80
+	        
+	        
+	        // --> alt:   driver.get(Utils.getProperties("urlHomePage") + ":" + System.getProperty("localhostPort", defaultPort));  
+	         
 	    }
 
 
 
-
-	    /**
-	     * Stops the driver
-	     */
 	    private static void stopDriver() {
 	        driver.quit();
 	        driver = null;
@@ -76,41 +98,9 @@ public class DriverProvider {
 	        Runtime.getRuntime().addShutdownHook(shutdownHook);
 	    }
 
-	    /**
-	     * Returns the http base URL
-	     * @return the http base URL
-	     */
-	    private static String getHTTPBaseUrl() {
-	        return _url;
-	    }
-	    public static void setHTTPBaseUrl(String url){
-	    	_url = url;
-	    }
 
-	    /**
-	     * Navigates to the base url ({@link #getHTTPBaseUrl()})
-	     * @param driver The driver
-	     */
-	    public static void navigateToBaseUrl(WebDriver driver) {
-	        driver.navigate().to(getHTTPBaseUrl());
-	    }
 
-	    /**
-	     * Navigates to "{@link #getHTTPBaseUrl()} + {@code subUrl}"
-	     * @param driver The driver
-	     * @param subUrl The sub url
-	     */
-	    public static void navigateToSubUrl(WebDriver driver, String subUrl) {
-	        driver.navigate().to(getHTTPBaseUrl() + subUrl);
-	    }
 
-	   
-
-	    /**
-	     * Returns whether the driver is located on the login page or not
-	     * @param driver The driver
-	     * @return {@code true} if the driver is on the login page {@code false} otherwise
-	     */
 	    public static boolean isOnMainheaderPage(WebDriver driver) {
 	        try {
 	            MainheaderPage login = PageFactory.initElements(driver, MainheaderPage.class);

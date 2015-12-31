@@ -1,5 +1,7 @@
 package tests.userManagement;
 
+import java.net.MalformedURLException;
+
 import org.apache.http.util.Asserts;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -20,8 +22,8 @@ public class AuthorLoginTest {
 	private static AuthorProfilePage authorProfilePage;
 
 	@Test(groups={"login"})
-	public static void loginAuthorAdmin() {
-		DriverProvider.setHTTPBaseUrl(Utils.getProperties("urlHomePage"));
+	public static void loginAuthorAdmin() throws MalformedURLException {
+		
 		driver = Utils.initializeDriver();
 
 		initializePageObjects();

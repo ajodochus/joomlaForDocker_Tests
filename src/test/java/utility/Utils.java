@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InterfaceAddress;
+import java.net.MalformedURLException;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.List;
@@ -40,7 +41,7 @@ public class Utils {
 
 	  }
 	
-	public static WebDriver initializeDriver() {
+	public static WebDriver initializeDriver() throws MalformedURLException {
 		WebDriver driver = DriverProvider.getDriver();
 		// DriverProvider.navigateToBaseUrl(driver);
 		return driver;
@@ -57,7 +58,7 @@ public class Utils {
 
 		} catch (Exception e) {
 			System.out.println("docker0 interface nicht aktiv");
-			ipDocker = "Docker Hub not running";
+			ipDocker = getProperties("urlHomePage");
 		}
 		return ipDocker;
 	}
