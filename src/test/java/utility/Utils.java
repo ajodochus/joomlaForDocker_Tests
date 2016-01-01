@@ -1,6 +1,9 @@
 package utility;
 
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InterfaceAddress;
@@ -9,6 +12,7 @@ import java.net.SocketException;
 import java.util.List;
 import java.util.Properties;
 
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -67,5 +71,28 @@ public class Utils {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
+	
+	public static Cookie storeCookies(WebDriver driver){
+		
+		File f = new File("browser.data");
+	    try{
+	         f.delete();
+	         f.createNewFile();
+	         FileWriter fos = new FileWriter(f);
+	         BufferedWriter bos = new BufferedWriter(fos);
 
+	         for(Cookie ck : driver.manage().getCookies()) {
+	        	    bos.write((ck.getName()+";"+ck.getValue()+";"+ck.getDomain()
+	        	    	    +";"+ck.getPath()+";"+ck.getExpiry()+";"+ck.isSecure()));
+	        	    bos.newLine();
+	         }
+	         bos.flush();
+	         bos.close();
+	         fos.close();
+	     }catch(Exception ex){
+	         ex.printStackTrace();
+	     }
+		return null;
+		
+	}
 }
