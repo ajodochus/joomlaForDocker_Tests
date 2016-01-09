@@ -25,6 +25,12 @@ public class AuthorProfilePage extends MainheaderPage {
 		// TODO Auto-generated method stub
 		return txt_profileHeader();
 	}
+	@Override
+	public String expectedUrl() {
+		// TODO Auto-generated method stub
+		String url = "http://localhost/index.php/log-out/profile";
+		return  url;
+	}
 	
 	protected WebElement txt_profileHeader() {
         return txt_profileheader;

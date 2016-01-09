@@ -30,6 +30,12 @@ public class AuthorLoginPage extends MainheaderPage{
 		// TODO Auto-generated method stub
 		return get_tf_username();
 	}
+	@Override
+	public String expectedUrl() {
+		// TODO Auto-generated method stub
+		String url = "http://localhost/index.php/author-login";
+		return  url;
+	}
 	protected WebElement get_tf_username() {
         return tf_username;
     }
@@ -43,8 +49,5 @@ public class AuthorLoginPage extends MainheaderPage{
 		tf_password.sendKeys("admin");
 		btn_submit.submit();				
 	}
-
-	
-
 
 }
