@@ -29,11 +29,6 @@ public class MainheaderPage extends AbstractPage {
         return lnk_AuthorLogin;
     }
 
-	@Override
-	public String expectedUrl() {
-		// TODO Auto-generated method stub
-		String url = "http://localhost/headerPageDoesNotExist";
-		return  url;
-	}
+
 
 }

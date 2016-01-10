@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class AuthorLoginPage extends MainheaderPage{
+public class AuthorLoginPage extends AbstractPage{
 	 @FindBy(how = How.ID, using = "username")
 	    private WebElement tf_username;
 	 @FindBy(how = How.ID, using = "password")
@@ -14,15 +14,17 @@ public class AuthorLoginPage extends MainheaderPage{
 	    private WebElement btn_submit;
 	 @FindBy(how=How.ID, using="remember")
 	 	private WebElement chkb_remember;
+	 
 
 	
 	public AuthorLoginPage(WebDriver driver) {
 		super(driver);
+		expectedUrl = "http://localhost/index.php/author-login";
 		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public boolean isDisplayed() {
-		return super.isDisplayed() && get_tf_username().isDisplayed();
+		return get_tf_username().isDisplayed();
 	}
 
 	@Override
@@ -30,12 +32,9 @@ public class AuthorLoginPage extends MainheaderPage{
 		// TODO Auto-generated method stub
 		return get_tf_username();
 	}
-	@Override
-	public String expectedUrl() {
-		// TODO Auto-generated method stub
-		String url = "http://localhost/index.php/author-login";
-		return  url;
-	}
+	
+	
+
 	protected WebElement get_tf_username() {
         return tf_username;
     }
@@ -49,5 +48,8 @@ public class AuthorLoginPage extends MainheaderPage{
 		tf_password.sendKeys("admin");
 		btn_submit.submit();				
 	}
+
+	
+
 
 }

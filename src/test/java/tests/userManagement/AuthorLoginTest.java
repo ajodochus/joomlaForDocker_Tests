@@ -40,9 +40,9 @@ public class AuthorLoginTest extends AbstractTest {
 		
 		//goto Author Login Page by link
 		Assert.assertTrue(authorLoginPage.isDisplayedWithExplicitWait());
-		System.out.println(authorLoginPage.getTitle());
-		System.out.println("url: " + authorLoginPage.expectedUrl());
-		System.out.println("currenturl: " + driver.getCurrentUrl());
+		//System.out.println(authorLoginPage.getTitle());
+		System.out.println("url: " + authorLoginPage.compareUrl());
+	
 		
 		authorLoginPage.loginWithAdmin();
 		

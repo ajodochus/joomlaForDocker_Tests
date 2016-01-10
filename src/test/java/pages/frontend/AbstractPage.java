@@ -15,15 +15,20 @@ public abstract class AbstractPage {
 	private static final long WAIT_FOR_PAGE_TO_LOAD_TIME = Long
 			.parseLong(System.getProperty("selenium.waitForPageToLoad.timeout", "60"));
 	protected WebDriver driver;
-	protected String url;
+	public String currentUrl;
+	protected String expectedUrl;
 
 	public AbstractPage(WebDriver driver) {
 		this.driver = driver;
-		this.driver.getCurrentUrl();
+		currentUrl = driver.getCurrentUrl();
+
     }
 	public abstract boolean isDisplayed();
     protected abstract WebElement explicitWaitReturn();
-    public abstract String expectedUrl();
+
+
+	
+    
     
     
     public void explicitWaitForPage() {
@@ -56,8 +61,16 @@ public abstract class AbstractPage {
     public String getTitle() {
         return driver.getTitle();
     }
-    public String getUrl() {
-        return url;
+    public boolean compareUrl(){
+    	currentUrl = driver.getCurrentUrl().toString();
+    	System.out.println("current url in abstract method: " + currentUrl);
+    	System.out.println("expected url in abstract method: " + expectedUrl);
+    	if (expectedUrl==currentUrl) {
+			return true;
+		}else{
+			return false;
+		}
+    	
     }
 	      
 }
