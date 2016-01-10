@@ -1,16 +1,22 @@
 package utility;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Properties;
+import java.util.StringTokenizer;
 
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
@@ -23,11 +29,12 @@ public class Utils {
 
 	static WebDriver driver;
 	
-	public static String getProperties(String key) {
+	public static String getProperties(String resourceName, String key) {
 
 		String value = "not set";
 		
-		String resourceName = "config.properties"; // could also be a constant
+		String rescorceName = resourceName;
+		// could also be a constant
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
 		Properties props = new Properties();
 		try(InputStream resourceStream = loader.getResourceAsStream(resourceName)) {
@@ -94,5 +101,48 @@ public class Utils {
 	     }
 		return null;
 		
+	}
+	public static void replaceCookie(WebDriver driver){
+		try{
+		     File f2 = new File("browser.data");
+		     FileReader fr = new FileReader(f2);
+		     BufferedReader br = new BufferedReader(fr);
+		     String line;
+		     while((line=br.readLine())!=null){
+		         StringTokenizer str = new StringTokenizer(line,";");
+		         while(str.hasMoreTokens()){
+		             String name = str.nextToken();
+		             String value = str.nextToken();
+		             String domain = str.nextToken();
+		             String path = str.nextToken();
+		             Date expiry = null;
+		             String dt;
+		             /*if(!(dt=str.nextToken()).equals("null")){
+		                 expiry = new Date(dt);
+		             }*/
+		             boolean isSecure = new Boolean(str.nextToken()).booleanValue();
+		             Cookie ck = new Cookie(name,value,domain,path,expiry,isSecure);
+		             driver.manage().addCookie(ck);
+		         }
+		     }
+		}catch(Exception ex){
+		     ex.printStackTrace();
+		}
+		
+	}
+	public static void renameLoggerFile() {
+		File logOld = new File("logs/temp.log");		  
+	    File logNew = new File("logs/logger_" + getTime() + ".log");
+	    System.out.println("timestampfile: " + logNew);
+	    boolean bool = true;
+	    bool = logOld.renameTo(logNew);
+	    System.out.println("rename: " + bool);
+	}
+	
+	public static String getTime(){
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date));
+		return dateFormat.format(date).toString();
 	}
 }

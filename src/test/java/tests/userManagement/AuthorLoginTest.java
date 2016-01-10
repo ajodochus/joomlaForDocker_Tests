@@ -1,5 +1,6 @@
 package tests.userManagement;
 
+
 import org.apache.http.util.Asserts;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -9,24 +10,27 @@ import org.testng.annotations.Test;
 import pages.frontend.AuthorLoginPage;
 import pages.frontend.AuthorProfilePage;
 import pages.frontend.MainheaderPage;
-
+import utility.AbstractTest;
 import utility.DriverProvider;
 import utility.Utils;
+import org.apache.log4j.Logger;
 
-public class AuthorLoginTest {
+
+public class AuthorLoginTest extends AbstractTest {
 
 	private static WebDriver driver;
 
 	private static AuthorLoginPage authorLoginPage;
 	private static AuthorProfilePage authorProfilePage;
 	private static MainheaderPage  mainheaderPage;
-	
+	private static Logger logger = Logger.getLogger(AuthorLoginTest.class);
 
 	@Test(groups={"login"})
 	public static void loginAuthorAdmin() {
-		DriverProvider.setHTTPBaseUrl(Utils.getProperties("urlHomePage"));
+		DriverProvider.setHTTPBaseUrl(Utils.getProperties("config.properties", "urlHomePage"));
 		//driver = Utils.initializeDriver();
 		driver  = DriverProvider.getDriver();
+		logger.info("open localhost homepage");
 
 		initializePageObjects();
 		//call localhost
@@ -52,7 +56,7 @@ public class AuthorLoginTest {
 	
 	@Test(groups={"properties"})
 	public static void getProperties(){
-		System.out.println("url: " + Utils.getProperties("urlHomePage"));
+		System.out.println("url: " + Utils.getProperties("config.properties", "urlHomePage"));
 		String localhostPort = "Port not readale";
 		localhostPort = System.getProperty("localhostPort");
 		System.out.println("Sytem.Properties via pom and commandline: " + localhostPort);
